@@ -10,4 +10,10 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="sign_in">Sign in</string>
+    <string name="timing">Timing</string>
+    <string name="venue">Venue: </string>
+    <string name="branch">Branch: </string>
+    <string name="sem">Semester: </string>
+    <string name="what_to_bring">What to Bring: </string>
+    <string name="extra">Extra: </string>
 </resources>
