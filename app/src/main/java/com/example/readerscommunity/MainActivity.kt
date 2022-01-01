@@ -1,9 +1,11 @@
 package com.example.readerscommunity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -19,21 +21,31 @@ class MainActivity : AppCompatActivity(), OnEventClickListerner {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        title="Welcome"
-//        auth = FirebaseAuth.getInstance()
-//        val user = Firebase.auth.currentUser
-//        if (user == null) {
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        } else {
-
+        title="Readers Community"
+        auth = FirebaseAuth.getInstance()
+        val user = Firebase.auth.currentUser
+        if (user == null) {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        } else {
             generateEventList()
+        }
+    }
 
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.getItemId()
+        if (id == R.id.action_logout) {
+            signOut()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun generateEventList() {
@@ -56,7 +68,7 @@ class MainActivity : AppCompatActivity(), OnEventClickListerner {
             }
     }
 
-    fun signOut(view: View) {
+    fun signOut() {
         auth.signOut()
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)

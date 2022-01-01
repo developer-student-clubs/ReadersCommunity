@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReadersCommunity">
         <activity
+            android:name=".CreateProfile"
+            android:exported="false" />
+        <activity
             android:name=".EventDetail"
             android:exported="false" />
         <activity

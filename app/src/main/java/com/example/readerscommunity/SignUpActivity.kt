@@ -29,7 +29,7 @@ class SignUpActivity : AppCompatActivity() {
 
         auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task ->
             if(task.isSuccessful){
-                val intent= Intent(this,MainActivity::class.java)
+                val intent= Intent(this,CreateProfile::class.java)
                 startActivity(intent)
                 finish()
             }
