@@ -24,7 +24,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_profile)
         binding = ActivityProfileBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+//        setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
         //loadUserInfo()
@@ -43,24 +43,24 @@ class ProfileActivity : AppCompatActivity() {
 
     }
 
-    private fun loadUserInfo() {
-
-        val db= Firebase.firestore.collection("users").document(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnCompleteListener {
-            task->
-            run {
-                if (task.isSuccessful && task.result !== null) {
-                    //eventList = task.toObjects(EventModel::class.java) as ArrayList<EventModel>
-                    val name = task.result.getString("Name")
-                    val dduID = task.result.getString("Id")
-                    val Mobile = task.result.getString("Mobile")
-                    val Branch = task.result.getString("Branch")
-                    val Sem = task.result.getString("Sem")
-
-                }
-            }
-        }
-
-    }
+//    private fun loadUserInfo() {
+//
+//        val db= Firebase.firestore.collection("users").document(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnCompleteListener {
+//            task->
+//            run {
+//                if (task.isSuccessful && task.result !== null) {
+//                    //eventList = task.toObjects(EventModel::class.java) as ArrayList<EventModel>
+//                    val name = task.result.getString("Name")
+//                    val dduID = task.result.getString("Id")
+//                    val Mobile = task.result.getString("Mobile")
+//                    val Branch = task.result.getString("Branch")
+//                    val Sem = task.result.getString("Sem")
+//
+//                }
+//            }
+//        }
+//
+//    }
 
 
     }

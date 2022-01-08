@@ -90,19 +90,19 @@ class MainActivity : AppCompatActivity(), OnEventClickListerner {
     }
 
     fun viewProfile(){
-        val intent=Intent(this,ProfileActivity::class.java)
+        val intent=Intent(this,ProfileDetail::class.java)
         intent.putExtra("student_name",name)
-        Log.d("debug",name)
+
         intent.putExtra("DDU_ID",dduID)
-        Log.d("debug",dduID)
+
         intent.putExtra("Mobile_No",mobile)
-        Log.d("debug",mobile)
+
         intent.putExtra("Branch",branch)
-        Log.d("debug",branch)
+
         intent.putExtra("Sem",sem)
-        Log.d("debug",sem)
+
         intent.putExtra("Email",email)
-        Log.d("debug",email)
+
         startActivity(intent)
     }
 
@@ -122,17 +122,20 @@ class MainActivity : AppCompatActivity(), OnEventClickListerner {
     }
     private fun loadUserInfo() {
 
-        Firebase.firestore.collection("users").document(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnCompleteListener {
+        var emailField = FirebaseAuth.getInstance().getCurrentUser()!!.email!!
+        Log.d("id", emailField)
+        FirebaseFirestore.getInstance().collection("users").whereEqualTo("Email", emailField).get().addOnCompleteListener {
                 task->
             run {
                 if (task.isSuccessful && task.result !== null) {
-                    //eventList = task.toObjects(EventModel::class.java) as ArrayList<EventModel>
-                     name = task.result.getString("Name").toString()
-                     dduID = task.result.getString("Id").toString()
-                     email=task.result.getString("Email").toString()
-                     mobile = task.result.getString("Mobile").toString()
-                     branch = task.result.getString("Branch").toString()
-                     sem = task.result.getString("Sem").toString()
+                    val userMap = task.result.documents[0].getData()
+
+                    name = userMap!!.getValue("Name") as String
+                     dduID = userMap!!.getValue("Id") as String
+                     email= userMap!!.getValue("Email") as String
+                     mobile = userMap!!.getValue("Mobile") as String
+                     branch = userMap!!.getValue("Branch") as String
+                     sem = userMap!!.getValue("Sem") as String
 
                 }
             }
