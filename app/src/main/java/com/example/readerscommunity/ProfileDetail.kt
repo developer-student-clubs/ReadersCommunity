@@ -18,6 +18,12 @@ class ProfileDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_profile)
 
+        //handle click, go back
+
+        backBtn.setOnClickListener {
+            onBackPressed()
+        }
+
         val Student_name = intent.getStringExtra("student_name")
         val College_ID = intent.getStringExtra("DDU_ID")
         val Mobile_No = intent.getStringExtra("Mobile_No")

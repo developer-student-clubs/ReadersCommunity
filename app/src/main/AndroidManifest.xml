@@ -24,7 +24,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity android:name=".ProfileDetail"
-            android:exported="false"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"
