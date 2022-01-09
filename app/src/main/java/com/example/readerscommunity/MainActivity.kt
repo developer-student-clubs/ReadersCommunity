@@ -15,7 +15,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 
-
+var user = UserModel("", "", "", "", "", "")
 class MainActivity : AppCompatActivity(), OnEventClickListerner {
 
     private lateinit var auth: FirebaseAuth
@@ -118,6 +118,8 @@ class MainActivity : AppCompatActivity(), OnEventClickListerner {
         intent.putExtra("sem", eventList[position].semester)
         intent.putExtra("what_to_bring", eventList[position].what_to_bring)
         intent.putExtra("extra", eventList[position].extraInfo)
+        intent.putExtra("id", eventList[position].id)
+        intent.putExtra("currentSeatAvailable", eventList[position].currentSeatAvailable)
         startActivity(intent)
     }
     private fun loadUserInfo() {
@@ -136,7 +138,7 @@ class MainActivity : AppCompatActivity(), OnEventClickListerner {
                      mobile = userMap!!.getValue("Mobile") as String
                      branch = userMap!!.getValue("Branch") as String
                      sem = userMap!!.getValue("Sem") as String
-
+                    user = UserModel(branch, email, dduID, mobile, name, sem);
                 }
             }
         }

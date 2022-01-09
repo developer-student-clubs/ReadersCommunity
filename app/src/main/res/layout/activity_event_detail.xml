@@ -251,9 +251,17 @@
                 app:layout_constraintStart_toEndOf="@id/extra_title"
                 app:layout_constraintTop_toBottomOf="@id/event_what_to_bring" />
 
-
-
-
+            <Button
+                android:id="@+id/eventRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Register"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/event_extra" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
