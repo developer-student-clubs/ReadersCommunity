@@ -134,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="DDU ID :"
+                    android:text="STUDENT ID :"
                     android:textColor="@color/gray"
                     android:textStyle="bold"/>
 

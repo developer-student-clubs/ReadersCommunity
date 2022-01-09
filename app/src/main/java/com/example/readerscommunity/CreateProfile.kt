@@ -22,6 +22,12 @@ class CreateProfile : AppCompatActivity() {
     }
 
     fun saveProfile (view: View) {
+
+        if (binding.editStudentId?.text.toString() == "" || binding.editName?.text.toString() == "" || binding.editBranch?.text.toString() == "" || binding.editSem?.text.toString() == "" || binding.editMobile?.text.toString() == "") {
+            Toast.makeText(applicationContext, "All fields are mandatory", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         val studentId = binding.editStudentId.text.toString()
         val name = binding.editName.text.toString()
         val branch = binding.editBranch.text.toString()

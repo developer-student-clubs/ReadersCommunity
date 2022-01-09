@@ -24,6 +24,12 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     fun signUp(view: View){
+
+        if (binding.editTextEmailAddress?.text.toString() == "" || binding.editTextPassword?.text.toString() == "") {
+            Toast.makeText(applicationContext, "Email or Password can't be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         val email = binding.editTextEmailAddress.text.toString()
         val password = binding.editTextPassword.text.toString()
 

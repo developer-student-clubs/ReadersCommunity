@@ -19,10 +19,12 @@
         android:layout_marginTop="104dp"
         android:layout_marginBottom="12dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="Enter Email"
         android:inputType="textEmailAddress"
         android:padding="10dp"
-        android:textColor="@color/black"
+        android:textColor="@color/purple_200"
+        android:backgroundTint="@color/purple_200"
+        android:textColorHint="@color/purple_200"
         app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -36,16 +38,18 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="41dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Enter Password"
         android:inputType="textPassword"
         android:padding="10dp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
+        android:textColor="@color/purple_200"
+        android:backgroundTint="@color/purple_200"
+        android:textColorHint="@color/purple_200"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
         app:layout_constraintStart_toStartOf="@+id/editTextEmailAddress"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
 
     <Button
-        android:id="@+id/buttonRegister"
+        android:id="@+id/buttonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -68,7 +72,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRegister">
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin">
 
         <TextView
             android:id="@+id/textView"
