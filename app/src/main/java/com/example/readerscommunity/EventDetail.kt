@@ -2,16 +2,21 @@ package com.example.readerscommunity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View.inflate
 import android.widget.Button
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.readerscommunity.databinding.ActivityCreateProfileBinding.inflate
+import com.example.readerscommunity.databinding.ActivityEventDetailBinding
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_event_detail.*
 
 class EventDetail : AppCompatActivity() {
+
+    lateinit var binding: ActivityEventDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_event_detail)
+        binding = ActivityEventDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val eventTitle = intent.getStringExtra("name")
         val eventImg = intent.getStringExtra("image")
@@ -27,17 +32,17 @@ class EventDetail : AppCompatActivity() {
         val seats = intent.getIntExtra("currentSeatAvailable", 0)
         val register = findViewById<Button>(R.id.eventRegister)
 
-        event_title_detail.text = eventTitle
-        event_date.text = eventDate
-        event_des.text = eventDes
-        event_time.text = eventTiming
-        event_venue.text = eventVenue
-        event_branch.text = eventBranch
-        event_sem.text = eventSem
-        event_what_to_bring.text = eventWhatToBring
-        event_extra.text = eventExtra
+        binding.eventTitleDetail.text = eventTitle
+        binding.eventDate.text = eventDate
+        binding.eventDes.text = eventDes
+        binding.eventTime.text = eventTiming
+        binding.eventVenue.text = eventVenue
+        binding.eventBranch.text = eventBranch
+        binding.eventSem.text = eventSem
+        binding.eventWhatToBring.text = eventWhatToBring
+        binding.eventExtra.text = eventExtra
 
-        Glide.with(this).load(eventImg).into(event_image)
+        Glide.with(this).load(eventImg).into(binding.eventImage)
 
         register.setOnClickListener{
             if (seats == 0)

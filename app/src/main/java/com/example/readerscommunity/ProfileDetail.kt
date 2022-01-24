@@ -8,19 +8,22 @@ import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.readerscommunity.databinding.ActivityCreateProfileBinding
+import com.example.readerscommunity.databinding.ActivityProfileBinding
+import com.example.readerscommunity.databinding.ActivityViewProfileBinding
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_event_detail.*
-import kotlinx.android.synthetic.main.activity_view_profile.*
 
 class ProfileDetail : AppCompatActivity() {
 
+    lateinit var binding: ActivityViewProfileBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_profile)
+        binding = ActivityViewProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //handle click, go back
 
-        backBtn.setOnClickListener {
+        binding.backBtn.setOnClickListener {
             onBackPressed()
         }
 
@@ -34,13 +37,13 @@ class ProfileDetail : AppCompatActivity() {
         Log.d("id", "@@@@@@@@@@@@@@@@")
         Log.d("id", Student_name!!)
         Log.d("id", College_ID!!)
-        profile_name.text = Student_name
-        profile_email.text = Email
-        detail_name_edit.text = Student_name
-        detail_branch_edit.text = Branch
-        detail_mobile_edit.text = Mobile_No
-        detail_id_edit.text = College_ID
-        detail_sem_edit.text = Sem
+        binding.profileName.text = Student_name
+        binding.profileEmail.text = Email
+        binding.detailNameEdit.text = Student_name
+        binding.detailBranchEdit.text = Branch
+        binding.detailMobileEdit.text = Mobile_No
+        binding.detailIdEdit.text = College_ID
+        binding.detailSemEdit.text = Sem
 
 
     }

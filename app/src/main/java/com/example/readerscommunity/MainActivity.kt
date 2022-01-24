@@ -8,17 +8,19 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.readerscommunity.databinding.ActivityLoginBinding
+import com.example.readerscommunity.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_main.*
 
 var user = UserModel("", "", "", "", "", "")
 class MainActivity : AppCompatActivity(), OnEventClickListerner {
 
     private lateinit var auth: FirebaseAuth
+    lateinit var binding: ActivityMainBinding
     var eventList = ArrayList<EventModel>()
     var name =""
     var dduID=""
@@ -28,7 +30,8 @@ class MainActivity : AppCompatActivity(), OnEventClickListerner {
     var email=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         title="Readers Community"
         auth = FirebaseAuth.getInstance()
         val user = Firebase.auth.currentUser
@@ -70,8 +73,8 @@ class MainActivity : AppCompatActivity(), OnEventClickListerner {
                 for(document in documents) {
                     eventList = documents.toObjects(EventModel::class.java) as ArrayList<EventModel>
                     var eventAdapter = EventAdapter(this, eventList, this)
-                    rv_event_list.layoutManager = LinearLayoutManager(this)
-                    rv_event_list.adapter = eventAdapter
+                    binding.rvEventList.layoutManager = LinearLayoutManager(this)
+                    binding.rvEventList.adapter = eventAdapter
 
                 }
 
